@@ -60,7 +60,8 @@ const checkToken = require('./middle/checkToken')
 const initWebSocket = require('./websocket')
 // const { createServer } = require('@aliyun/fc-http')
 
-const PORT = 3007
+// const PORT = 3007
+const PORT = process.env.PORT || 3007;
 //中间件
 app.use(cors())
 app.use(bodyParser())
