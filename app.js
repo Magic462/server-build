@@ -61,6 +61,7 @@ const initWebSocket = require('./websocket')
 // const { createServer } = require('@aliyun/fc-http')
 
 // const PORT = 3007
+const HOST = process.env.DB_HOST || 'localhost';
 const PORT = process.env.PORT || 3007;
 //中间件
 app.use(cors())
@@ -78,9 +79,12 @@ app.use(router.routes(), router.allowedMethods())
 
 
 
-const server = app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+const server = app.listen(PORT, HOST, () => {
+  console.log(`Server is running on http://${HOST}:${PORT}`);
 })
+// const server = app.listen(PORT, '0.0.0.0', () => {
+//   console.log(`Server is running on http://localhost:${PORT}`);
+// })
 
 // module.exports.handler = createServer(app);
 initWebSocket(server);
