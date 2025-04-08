@@ -1,20 +1,26 @@
 // 导入 mysql 模块
 const mysql = require('mysql2/promise');
-
+require('dotenv').config();
 
 //创建连接池
 // const db = mysql.createPool({
-//   host: '192.168.1.163',
+//   host: '192.168.1.74',
 //   user: 'skkka',
 //   password: '689689',
 //   database: 'item_01',
 // })
 const db = mysql.createPool({
-  host: '127.0.0.1',
-  user: 'root',
-  password: 'admin123',
-  database: 'item_01',
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 });
+// const db = mysql.createPool({
+//   host: '127.0.0.1',
+//   user: 'root',
+//   password: 'admin123',
+//   database: 'item_01',
+// });
 // 测试连接池
 async function testConnection() {
   try {
